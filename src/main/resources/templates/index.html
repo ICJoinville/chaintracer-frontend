@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/Layout.css}">
 </head>
 <body>
-    <h1 class="title">ChainTracer</h1>
+    <h1 class="title">ChainTracer<span id="blink">_  </span></h1>
     <hr/>
     <ul>
         <table>
@@ -15,12 +15,14 @@
                 <th>Hash</th>
                 <th>Previous Block</th>
                 <th>Previous Hash</th>
+                <th>Transactions</th>
             </tr>
-            <tr th:each="block : ${blocks}" th:attr="data-value=${block.id}">
+            <tr th:each="block : ${blocks.findAll()}" th:attr="data-value=${block.id}">
                 <td th:text="${block.getId()}">id</td>
                 <td th:text="${block.getHash()}">hash</td>
                 <td th:text="${block.getPreviousBlock()}">previousBlock</td>
                 <td th:text="${block.getPreviousHash()}">previousHash</td>
+                <td th:text="${block.getTransactions().size()}">transactionsAmount</td>
             </tr>
         </table>
 

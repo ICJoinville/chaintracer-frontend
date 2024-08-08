@@ -2,19 +2,16 @@ package frc.cyberrain.chaintracerfrontend.database.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.Getter;
+
+import java.util.List;
 
 @Entity(name = "accounts")
 public class Account {
 
-    @Id
+    @Id @Getter
     private String name;
-    private int lastValue;
-
-    public String getName() {
-        return name;
-    }
-
-    public int getLastValue() {
-        return lastValue;
-    }
+    @Getter private int lastValue;
+    @OneToMany(mappedBy = "id") @Getter private List<Transaction> transactions;
 }

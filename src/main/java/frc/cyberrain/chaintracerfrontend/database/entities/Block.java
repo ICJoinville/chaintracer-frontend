@@ -1,8 +1,9 @@
 package frc.cyberrain.chaintracerfrontend.database.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+
+import java.util.List;
 
 @Entity(name = "blocks")
 public class Block {
@@ -15,6 +16,9 @@ public class Block {
     private String hash;
     @Column(name = "previous_hash")
     private String previousHash;
+
+    @OneToMany(mappedBy = "id")
+    private List<Transaction> transactions;
 
     public Long getId() {
         return id;
@@ -30,5 +34,9 @@ public class Block {
 
     public String getPreviousHash() {
         return previousHash;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 }
