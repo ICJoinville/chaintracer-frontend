@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 
     @Autowired
-    BlockRepository blockRepository;
+    private BlockRepository blockRepository;
     @Autowired
     private TransactionRepository transactionRepository;
     @Autowired
