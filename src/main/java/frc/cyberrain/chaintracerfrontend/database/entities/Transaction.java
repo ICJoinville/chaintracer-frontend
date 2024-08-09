@@ -1,5 +1,7 @@
 package frc.cyberrain.chaintracerfrontend.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -12,5 +14,6 @@ public class Transaction {
     private Account account;
     @Getter private Long timestamp;
     @Getter private int value;
-    @ManyToOne @JoinColumn(name = "block_id") @Getter private Block block;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "block_id") @Getter private Block block;
 }

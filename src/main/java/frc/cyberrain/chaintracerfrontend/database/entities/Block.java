@@ -1,8 +1,13 @@
 package frc.cyberrain.chaintracerfrontend.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity(name = "blocks")
@@ -17,8 +22,8 @@ public class Block {
     @Column(name = "previous_hash")
     private String previousHash;
 
-    @OneToMany(mappedBy = "id")
-    private List<Transaction> transactions;
+    @OneToMany(mappedBy = "block", fetch = FetchType.EAGER, targetEntity = Transaction.class) @JsonIgnore
+    private List<Transaction> transactions = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -37,6 +42,6 @@ public class Block {
     }
 
     public List<Transaction> getTransactions() {
-        return transactions;
+        return Collections.unmodifiableList(transactions);
     }
 }
