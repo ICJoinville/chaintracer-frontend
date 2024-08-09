@@ -1,8 +1,6 @@
 package frc.cyberrain.chaintracerfrontend.pages;
 
-import frc.cyberrain.chaintracerfrontend.database.entities.Block;
 import frc.cyberrain.chaintracerfrontend.database.entities.Transaction;
-import frc.cyberrain.chaintracerfrontend.database.repositories.BlockRepository;
 import frc.cyberrain.chaintracerfrontend.database.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
