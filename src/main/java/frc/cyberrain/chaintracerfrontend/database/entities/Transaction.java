@@ -11,7 +11,7 @@ public class Transaction {
     @JoinColumn(name = "account") @ManyToOne @Getter
     private Account account;
     @Getter private Long timestamp;
-    @Getter private int value;
+    @Getter private String data;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "block_id") @Getter private Block block;
 }
